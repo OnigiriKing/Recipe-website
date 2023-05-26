@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receipt</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  <script defer src="js/bundle.js"></script></head>
+  <body class="bodyWrapper" style='background-image: url("./img/bg-pic-dark.jpg");'>
+    <div class="mainWrapper">
+      <header class="topHeader">
+        <img class="headerImage" src="./img/recipe-img.png" alt="headerImage" />
+        <div class="searchDiv">
+            <input
+          class="searchInput"
+          type="text" maxlength="20"
+          placeholder="search for your receipt"
+        />
+        <button class="searchBtn"><img src="./img/search-btn.png" alt="" /></button>
+        </div class="favDay">
+        <div>
+          <button class="dayMode">
+            <img src="./img/dark-btn.png" alt="lightDark" />
+          </button>
+          <button class="favoriteList">
+            <img src="./img/fav-img.png" alt="Favorite" />
+          </button>
+        </div>
+      </header>
+      <div class="bodyDiv">
+        <!-- ? recipe list -->
+        <div class="recipesMenu sideMenu">
+          <div>Recipe</div>
+        </div>
+        <!-- ? recipe discription -->
+        <div class="itemMenu">
+          <div>Item</div>
+        </div>
+        <!-- ? Groccery -->
+        <div class="shoppingList sideMenu">
+          <img src="./img/groccery.png" alt="Groccery">
+          <div>List</div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./js/bundle.js"></script>
+</html>
