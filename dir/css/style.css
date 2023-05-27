@@ -101,7 +101,8 @@
 .bodyDiv {
   display: flex;
   flex-direction: row;
-  height: 100vh;
+  min-height: 50vh;
+    height: 100%;
 }
 
 .sideMenu {
@@ -113,9 +114,12 @@
   object-position: center;
 }
 
-.sideMenu img {
-  width: 60%;
+.shoppingList img {
+  width: 70%;
   height: 6%;
+  max-width: 100px;
+  max-height: 30px;
+  min-height: 20px;
 }
 
 .itemMenu {
@@ -138,7 +142,35 @@
   font-size: 14px;
 }
 
-.recepieListImg {
+.recepieList {
+  display: flex;
   width: 100%;
+  flex-direction: column;
   height: 100%;
+  align-items: center;
+  object-position: center;
+  text-align: center;
+  color:rgb(226, 116, 20);
+}
+
+.recepieListImg img {
+  display: flex;
+  height: 80%;
+  width: 80%;
+  border-radius: 60%;
+  transform: translate(12%, 6%);
+}
+
+.recipeListBtn {
+  display: flex;
+  align-items: center;
+  object-position: center;
+  width: 100%;
+  margin-bottom: 10px;
+  background-color: white;
+  border: 1px solid;
+}
+
+.recipeListBtn:active {
+  background-color: rgb(200, 200, 200);
 }

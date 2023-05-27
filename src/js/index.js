@@ -11,13 +11,23 @@ const searchControll = async () => {
     if (query) {
       state.search = new Search(query);
 
+    // clrear prev results
+    searchView.clearResults();
+
+    //   seqrch results
       await state.search.getRecipe();
 
-
+    //   show result
       searchView.renderResults(state.search.data);
+
+    //   clean search
+      searchView.clearInput();
     }
+
+
 }
 
+// btn Search
 elements.searchBtn.addEventListener("click", (e) => {
   e.preventDefault();
   searchControll();

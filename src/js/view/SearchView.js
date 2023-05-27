@@ -4,8 +4,16 @@ export const getInput = () => {
   return elements.searchInput.value;
 };
 
+export const clearInput = () => {
+    elements.searchInput.value = "";
+}
+
+export const clearResults =() => {
+    elements.recipeMenue.innerHTML = ""
+}
+
 const renderRecepie = (recepie) => {
-  const newHtml = `<li class="recepieList" id='${recepie.id}'><h3 class="recepieListName">${recepie.title}</h3><img class="recepieListImg" src="${recepie.image}" alt="img"></li>`;
+  const newHtml = `<button class="recipeListBtn" id= "btn-${recepie.id}"><li class="recepieList" id='${recepie.id}'><h5 class="recepieListName">${recepie.title}</h5><div class="recepieListImg"><img src="${recepie.image}" alt="img"></div></li></button>`;
   elements.recipeMenue.insertAdjacentHTML("afterbegin", newHtml);
 };
 
