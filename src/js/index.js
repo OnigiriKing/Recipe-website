@@ -1,31 +1,33 @@
-import Search from './model/Search'
+import Search from "./model/Search";
 import * as searchView from "./view/SearchView";
-import {elements} from './view/base'
+import {
+  elements,
+  loaderImg,
+  removeLoaderImg,
+} from "./view/base";
 
-const state = {
-}
-
+const state = {};
 
 const searchControll = async () => {
-    const query = searchView.getInput();
-    if (query) {
-      state.search = new Search(query);
-
-    // clrear prev results
-    searchView.clearResults();
-
-    //   seqrch results
-      await state.search.getRecipe();
-
-    //   show result
-      searchView.renderResults(state.search.data);
+  const query = searchView.getInput();
+  if (query) {
+    state.search = new Search(query);
 
     //   clean search
-      searchView.clearInput();
-    }
+    searchView.clearInput();
+    // clrear prev results
+    searchView.clearResults();
+    // loading image
+    loaderImg(elements.recipeMenue);
 
+    //   seqrch results
+    await state.search.getRecipe();
 
-}
+    //   show result
+    removeLoaderImg();
+    searchView.renderResults(state.search.data);
+  }
+};
 
 // btn Search
 elements.searchBtn.addEventListener("click", (e) => {
@@ -55,10 +57,6 @@ elements.searchBtn.addEventListener("click", (e) => {
 // }
 
 // document.querySelector(".searchBtn").addEventListener("click", getRecipe);
-
-
-
-
 
 // ! dark/light btn
 // function changeTheme() {

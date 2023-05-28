@@ -174,3 +174,8 @@
 .recipeListBtn:active {
   background-color: rgb(200, 200, 200);
 }
+
+.loadingImg img {
+  width: 150px;
+  position: relative;
+}
