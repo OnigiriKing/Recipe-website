@@ -145,8 +145,12 @@
   height: 100%;
   align-items: center;
   object-position: center;
-  text-align: center;
+}
+
+.recepieListA {
+  text-decoration: none;
   color:rgb(226, 116, 20);
+  text-align: center;
 }
 
 .recepieListImg img {
@@ -154,7 +158,7 @@
   height: 80%;
   width: 80%;
   border-radius: 60%;
-  transform: translate(12%, 6%);
+  transform: translate(12%, -1%);
 }
 
 .recipeListBtn {

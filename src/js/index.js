@@ -32,33 +32,42 @@ const searchControll = async () => {
   }
 };
 
-const displayRecipe = async (btn) => {
-  let img, arr, recipeName, timeToCook, servings;
-  if (btn) {
-    img = btn.dataset.image;
-    recipeName = btn.dataset.title;
-    state.recipe = new Recipe(btn.id, img);
+const displayRecipe = async () => {
+  const id = window.location.hash.replace('#', '');
+  if (id) {
+    try {
+      let img, arr, recipeName, timeToCook, servings;
+      const base = document.getElementById(`${id}`);
+     recipeName = base.dataset.title;
+     img = base.dataset.image
+        state.recipe = new Recipe(id, img);
 
-    searchView.clearRecipe();
+        searchView.clearRecipe();
 
-    loaderImg(elements.itemMenu);
+        loaderImg(elements.itemMenu);
 
-    await state.recipe.disRecipe();
-    state.recipe.calcTime();
-    state.recipe.calcServings();
-    arr = state.recipe.data;
-    timeToCook = state.recipe.cookTime;
-    servings = state.recipe.servings;
-    
-    // ! check
-    console.log(state.recipe.cookTime)
+        await state.recipe.disRecipe();
+        state.recipe.calcTime();
+        state.recipe.calcServings();
+        arr = state.recipe.data;
+        timeToCook = state.recipe.cookTime;
+        servings = state.recipe.servings;
 
-    searchView.clearRecipe();
+        searchView.clearRecipe();
 
-
-    searchView.displayChosenRecipe(arr, img, recipeName, timeToCook, servings);
+        searchView.displayChosenRecipe(
+          arr,
+          img,
+          recipeName,
+          timeToCook,
+          servings
+        );
+    } catch(error) {
+      alert(error)
+    }
+    };
   }
-}
+  
 
 
 
@@ -79,11 +88,53 @@ elements.sideMenu.addEventListener("click", e => {
   }
 });
 
-// display recipe
-elements.sideMenu.addEventListener("click", e => {
-  const btn = e.target.closest(".recepieList");
-  displayRecipe(btn);
-});
+
+// window.addEventListener("hashchange",displayRecipe);
+["hashchange"].forEach((event) =>
+  window.addEventListener(event, displayRecipe)
+);
 
 
 elements.dayMode.addEventListener("click", searchView.changeTheme);
+
+
+
+
+
+
+
+// !OLD VERSION OF THE RECIPE DISPLAY
+// {
+// elements.sideMenu.addEventListener("click", e => {
+//   const btn = e.target.closest(".recepieList");
+//   displayRecipe(btn);
+// });
+// ! old function
+// const displayRecipe = async (btn) => {
+//   let img, arr, recipeName, timeToCook, servings;
+//   if (btn) {
+//     img = btn.dataset.image;
+//     recipeName = btn.dataset.title;
+//     state.recipe = new Recipe(btn.id, img);
+
+//     searchView.clearRecipe();
+
+//     loaderImg(elements.itemMenu);
+
+//     await state.recipe.disRecipe();
+//     state.recipe.calcTime();
+//     state.recipe.calcServings();
+//     arr = state.recipe.data;
+//     timeToCook = state.recipe.cookTime;
+//     servings = state.recipe.servings;
+    
+//     // ! check
+//     console.log(state.recipe.cookTime)
+
+//     searchView.clearRecipe();
+
+
+//     searchView.displayChosenRecipe(arr, img, recipeName, timeToCook, servings);
+//   }
+// }
+// }

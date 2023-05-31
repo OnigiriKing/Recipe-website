@@ -38,11 +38,13 @@ const renderRecepie = (recepie) => {
   }"><li class="recepieList" id='${recepie.id}' data-image= ${
     recepie.image
   } data-title = '${recepie.title}'
-  ><h5 class="recepieListName">${limitChar(
+  ><a class="recepieListA" href='#${
+    recepie.id
+  }'><h5 class="recepieListName">${limitChar(
     recepie.title
   )}</h5><div class="recepieListImg"><img src="${
     recepie.image
-  }" alt="img"></div></li></button>`;
+  }" alt="img"></div></a></li></button>`;
   elements.recipeMenue.insertAdjacentHTML("afterbegin", newHtml);
 };
 
