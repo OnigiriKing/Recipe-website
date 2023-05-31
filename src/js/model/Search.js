@@ -1,4 +1,5 @@
 import axios from "axios";
+import { apiSearchUrl, apiKey } from "../config";
 
 export default class Search {
   constructor(query) {
@@ -6,9 +7,7 @@ export default class Search {
   }
 
   async getRecipe() {
-    const apiUrl = `https://api.spoonacular.com/recipes/complexSearch`;
-    const apiKey = "c062fd2c1f8546059535d4d223d1334f";
-    const fullLink = `${apiUrl}?apiKey=${apiKey}&query=${this.query}`;
+    const fullLink = `${apiSearchUrl}?apiKey=${apiKey}&query=${this.query}`;
     // ?axios
     try {
       const res = await axios(fullLink);

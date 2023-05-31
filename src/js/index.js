@@ -1,4 +1,5 @@
 import Search from "./model/Search";
+import Recipe from "./model/Recipe";
 import * as searchView from "./view/SearchView";
 import {
   elements,
@@ -26,8 +27,40 @@ const searchControll = async () => {
     //   show result
     removeLoaderImg();
     searchView.renderResults(state.search.data);
+
+    state.recipe = new Recipe(state.search.data.id, state.search.data.img);
   }
 };
+
+const displayRecipe = async (btn) => {
+  let img, arr, recipeName, timeToCook, servings;
+  if (btn) {
+    img = btn.dataset.image;
+    recipeName = btn.dataset.title;
+    state.recipe = new Recipe(btn.id, img);
+
+    searchView.clearRecipe();
+
+    loaderImg(elements.itemMenu);
+
+    await state.recipe.disRecipe();
+    state.recipe.calcTime();
+    state.recipe.calcServings();
+    arr = state.recipe.data;
+    timeToCook = state.recipe.cookTime;
+    servings = state.recipe.servings;
+    
+    // ! check
+    console.log(state.recipe.cookTime)
+
+    searchView.clearRecipe();
+
+
+    searchView.displayChosenRecipe(arr, img, recipeName, timeToCook, servings);
+  }
+}
+
+
 
 // btn Search
 elements.searchBtn.addEventListener("click", (e) => {
@@ -35,41 +68,22 @@ elements.searchBtn.addEventListener("click", (e) => {
   searchControll();
 });
 
-// elements.searchBtn.addEventListener("click", (e) => {
-//   console.log(getInput());
-// });
+// page buttons 
+elements.sideMenu.addEventListener("click", e => {
+  const btn = e.target.closest(".pageBtn");
+  if (btn) {
+    const goToPage = parseInt(btn.dataset.goto, 10)
+    searchView.clearResults();
 
-// ? async version
-// async function getRecipe() {
-//   const recipeID = 648257;
-//   const apiUrl = `https://api.spoonacular.com/recipes/${recipeID}/ingredientWidget.json`;
-//   const recipeInput = "";
-//   const apiKey = "c062fd2c1f8546059535d4d223d1334f";
-//   const fullLink = `${apiUrl}?apiKey=${apiKey}`;
+    searchView.renderResults(state.search.data, goToPage);
+  }
+});
 
-//   try {
-//     const result = await fetch(fullLink);
-//     const data = await result.json();
-//     console.log(data);
-//   } catch (err) {
-//     console.log(error);
-//   }
-// }
+// display recipe
+elements.sideMenu.addEventListener("click", e => {
+  const btn = e.target.closest(".recepieList");
+  displayRecipe(btn);
+});
 
-// document.querySelector(".searchBtn").addEventListener("click", getRecipe);
 
-// ! dark/light btn
-// function changeTheme() {
-//   let bgStyle, btnStyle;
-//   bgStyle = document.querySelector(".bodyWrapper").style;
-//   btnStyle = document.querySelector(".dayMode img");
-//   if (bgStyle.backgroundImage.includes("dark")) {
-//     bgStyle.backgroundImage = 'url("./img/bg-pic-light.jpg")';
-//     btnStyle.src = "./img/light-btn.png";
-//   } else {
-//     bgStyle.backgroundImage = 'url("./img/bg-pic-dark.jpg")';
-//     btnStyle.src = "./img/dark-btn.png";
-//   }
-// }
-
-// document.querySelector(".dayMode").addEventListener("click", changeTheme);
+elements.dayMode.addEventListener("click", searchView.changeTheme);

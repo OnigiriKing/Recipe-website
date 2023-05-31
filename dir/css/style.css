@@ -20,7 +20,6 @@
 }
 
 .topHeader {
-  background-color: aliceblue;
   width: 70vw;
   height: 9vh;
   min-height: 35px;
@@ -70,6 +69,10 @@
 .dayMode {
   border: unset;
   background-color: inherit;
+  display: inline;
+  position: relative;
+  right: 20px;
+  margin-left: 20px;
 }
 
 .favoriteList img,
@@ -114,13 +117,6 @@
   object-position: center;
 }
 
-.shoppingList img {
-  width: 70%;
-  height: 6%;
-  max-width: 100px;
-  max-height: 30px;
-  min-height: 20px;
-}
 
 .itemMenu {
   width: 50vw;
@@ -178,4 +174,110 @@
 .loadingImg img {
   width: 150px;
   position: relative;
+}
+
+.resultPages {
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  color: black;
+  
+}
+
+.pageBtn {
+  width: 35%;
+  font-size: 9px;
+}
+
+.nextPageBtn {
+  align-self: flex-end;
+}
+
+.prevPageBtn {
+  align-self: flex-start;
+
+}
+
+.itemIgnPic {
+  display: flex;
+  align-items: center;
+  object-position: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.itemIgnPic img {
+  width: 80%;
+  margin-bottom: 20px;
+}
+
+.ingridientList {
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.ingridient {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.ingridient h4 {
+  margin-right: 5vw;
+  margin-left: 20px;
+  color: rgb(200, 98, 26);
+  border-bottom: 1px solid ;
+  
+}
+
+.ingridient p {
+  border: 1px solid black;
+}
+
+.itemIngName {
+  color: rgb(200, 98, 26);
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 3px;
+  background-color: #fff
+};
+
+.servingsPerson {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.servingsPerson div {
+  display: inline;
+}
+
+.timeToCook img:only-child {
+  width: 20px;
+  position: relative;
+  top: 23px;
+  right: 2px;
+}
+
+.timeToCook {
+   margin-right: 80px;
+   display: flex;
+   align-items: center;
+   flex-direction: row;
+}
+
+.servings img:only-child {
+  width: 25px;
+  position: relative;
+  top: 23px;
+  right: -2px;
+}
+
+.shoppingList img {
+  width: 70%;
+  height: 6%;
+  max-width: 100px;
+  max-height: 30px;
+  min-height: 20px;
 }
