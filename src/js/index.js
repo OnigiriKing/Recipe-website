@@ -47,6 +47,10 @@ const displayRecipe = async () => {
         loaderImg(elements.itemMenu);
 
         await state.recipe.disRecipe();
+
+        // ? Change unit
+        state.recipe.changeUnit();
+
         state.recipe.calcTime();
         state.recipe.calcServings();
         arr = state.recipe.data;
@@ -64,6 +68,7 @@ const displayRecipe = async () => {
         );
     } catch(error) {
       alert(error)
+      console.log(error)
     }
     };
   }
