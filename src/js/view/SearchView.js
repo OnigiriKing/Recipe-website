@@ -13,10 +13,7 @@ export const clearResults = () => {
   elements.recipeMenue.innerHTML = "";
 };
 
-// clear chosen recipe (middle) area 
-export const clearRecipe = () => {
-  elements.itemMenu.innerHTML = "";
-};
+
 
 
 // linit recipe name
@@ -89,49 +86,13 @@ const renderButtons = (page, numRes, resOnPage) => {
 };
 
 // show resulst on page
-export const renderResults = (recipes, page = 1, resultsOnPage = 3) => {
+export const renderResults = (recipes, page = 1, resultsOnPage = 5) => {
   const start = (page - 1) * resultsOnPage;
   const end = page * resultsOnPage;
   recipes.slice(start, end).forEach(renderRecepie);
   renderButtons(page, recipes.length, resultsOnPage);
 };
 
-// add every ingr
-const addIngridients = (name, value, unit) => {
-  const ingHtml = `<li class="ingridient">
-              <h4 class="ingName">${name}</h4>
-              <p class="ingCount">${
-                value > 1 ? Math.ceil(value) : value
-              } ${unit}</p>
-            </li>`;
-
-            document
-              .querySelector(".ingridientList")
-              .insertAdjacentHTML("afterbegin", ingHtml);
-}
-// displa ingr
-export const displayChosenRecipe = (arr, image, name, time, serv) => {
-  const html = `<div class="itemIgnPic"><h2 class="itemIngName">${name}</h2>
-            <img src="${image}" alt="RecipePic">
-            <div class="servingsPerson">
-              <div class="timeToCook"><img src="./img/timeToCook.png" alt="CookingTime">${time}</div>
-              <div class="servings">${serv} 
-                <img src="./img/servings-img.png" alt="CookingTime">
-              </div>
-          </div>
-          <ul class="ingridientList">
-          </ul>
-          </div>`;
-    elements.itemMenu.insertAdjacentHTML("afterbegin", html);
-
-    arr.forEach(e => {
-      addIngridients(
-        e.name,
-        e.amount.metric.value,
-        e.amount.metric.unit
-      );
-    })
-};
 
 
 export const changeTheme = () => {
@@ -144,3 +105,19 @@ export const changeTheme = () => {
     elements.dayNightBtnImg.src = "./img/dark-btn.png";
   }
 }
+
+
+export const highlightChosen = (id, active) => {
+  if (active == 1) {
+    document.querySelector(`a[href='#${id}']`).style.backgroundColor = "gray";
+  }
+};
+
+export const clearHighlight = (active) => {
+  if (active == 1) {
+    const elements = document.querySelectorAll(".recepieListA");
+    elements.forEach(e => {
+      e.style.background = "white";
+    })
+  }
+};

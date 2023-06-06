@@ -2,11 +2,10 @@ import axios from "axios";
 import { apiKey } from "../config";
 
 export default class Recipe {
-  constructor(id, pic) {
+  constructor(id) {
     this.id = id;
-    this.pic = pic;
   }
-
+  // fetch ingridients
   async disRecipe() {
     const fullLink = `https://api.spoonacular.com/recipes/${this.id}/ingredientWidget.json?apiKey=${apiKey}`;
     try {
@@ -15,8 +14,8 @@ export default class Recipe {
     } catch (error) {
       alert("Sorry, something went wrong.");
     }
-  }
-  // ! check
+  };
+  // calculate time to cook
   calcTime() {
     let ingCount, parts;
     ingCount = this.data.length;
@@ -24,6 +23,7 @@ export default class Recipe {
     this.cookTime = parts * 15;
   }
 
+  // servings
   calcServings() {
     if (this.data.length > 10) {
       this.servings = 4;
@@ -31,7 +31,7 @@ export default class Recipe {
       this.servings = 2;
     }
   }
-  
+
   // to change units of ing
   changeUnit = () => {
     const toChange = ["tbsps", "tsps", "servings", "squares"];
@@ -40,7 +40,7 @@ export default class Recipe {
       let ing = el.amount.metric.unit.toLowerCase();
 
       toChange.forEach((unit, i) => {
-          ing = ing.replace(unit, newUnit[i]);
+        ing = ing.replace(unit, newUnit[i]);
       });
 
       // ? to return a new object and retain an old array
@@ -57,4 +57,23 @@ export default class Recipe {
     });
     this.data = newArray;
   };
-}
+
+  // change value numbers 
+  changeValue = () => {
+    this.data.forEach((el) => {
+      let num = el.amount.metric.value;
+      el.amount.metric.value = parseFloat(num.toFixed(1));
+    });
+  };
+  // get image and name
+    async getImgName() {
+      const fullLink = `https://api.spoonacular.com/recipes/${this.id}/information?apiKey=${apiKey}`;
+      try {
+        const res = await axios(fullLink);
+        this.image = res.data.image;
+        this.title = res.data.title;
+      } catch (error) {
+        alert("Sorry, something went wrong 404.");
+      }
+    };
+};

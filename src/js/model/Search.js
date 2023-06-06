@@ -7,7 +7,7 @@ export default class Search {
   }
 
   async getRecipe() {
-    const fullLink = `${apiSearchUrl}?apiKey=${apiKey}&query=${this.query}`;
+    const fullLink = `${apiSearchUrl}?apiKey=${apiKey}&query=${this.query}&number=20`;
     // ?axios
     try {
       const res = await axios(fullLink);
