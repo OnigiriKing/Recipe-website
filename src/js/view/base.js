@@ -7,6 +7,7 @@ export const elements = {
   bodyWrapper: document.querySelector(".bodyWrapper"),
   dayNightBtnImg: document.querySelector(".dayMode img"),
   dayMode: document.querySelector(".dayMode"),
+  plusMinus: document.querySelector(".plusMinusBtn"),
 };
 
 export const elementsStrings = {

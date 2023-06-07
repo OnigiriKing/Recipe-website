@@ -276,7 +276,7 @@
   width: 25px;
   position: relative;
   top: 23px;
-  right: -2px;
+  right: 2px;
 }
 
 .shoppingList img {
@@ -285,4 +285,19 @@
   max-width: 100px;
   max-height: 30px;
   min-height: 20px;
+}
+
+.plusMinusBtn button {
+  width: 18px;
+  height: 18px;
+  position: relative;
+  top: 17px;
+  margin-right: 4px;
+  border: unset;
+  background-color: transparent;
+}
+
+.plusMinusBtn img:active {
+  background-color: rgb(200, 200, 200);
+   border-radius: 15px;
 }

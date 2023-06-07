@@ -76,4 +76,14 @@ export default class Recipe {
         alert("Sorry, something went wrong 404.");
       }
     };
+
+
+
+    ingridienceChange(type) {
+      let newIng = type == 'inc' ? this.servings + 1 : this.servings - 1;
+      this.data.forEach(e => {
+        e.amount.metric.value *= newIng/this.servings
+      })
+      this.servings = newIng;
+    };
 };

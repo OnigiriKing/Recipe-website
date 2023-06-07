@@ -45,9 +45,7 @@ const displayRecipe = async () => {
         recipeName = state.recipe.title;
         img = state.recipe.image;
         active = 0;
-      };
-
-      console.log(state.recipe.image, 14);
+      }
 
       recipeView.clearRecipe();
 
@@ -72,6 +70,7 @@ const displayRecipe = async () => {
 
       searchView.highlightChosen(id, active);
 
+      console.log(state.recipe.data);
 
       recipeView.displayChosenRecipe(
         arr,
@@ -88,6 +87,8 @@ const displayRecipe = async () => {
 };
 
 // btn Search
+
+['click', ]
 elements.searchBtn.addEventListener("click", (e) => {
   e.preventDefault();
   searchControll();
@@ -110,46 +111,20 @@ elements.sideMenu.addEventListener("click", (e) => {
   }
 });
 
-// window.addEventListener("hashchange",displayRecipe);
-
 // ! add load here later
-["hashchange"].forEach((event) =>
+["hashchange", 'load'].forEach((event) =>
   window.addEventListener(event, displayRecipe)
 );
 
 elements.dayMode.addEventListener("click", searchView.changeTheme);
 
-// !OLD VERSION OF THE RECIPE DISPLAY
-// {
-// elements.sideMenu.addEventListener("click", e => {
-//   const btn = e.target.closest(".recepieList");
-//   displayRecipe(btn);
-// });
-// ! old function
-// const displayRecipe = async (btn) => {
-//   let img, arr, recipeName, timeToCook, servings;
-//   if (btn) {
-//     img = btn.dataset.image;
-//     recipeName = btn.dataset.title;
-//     state.recipe = new Recipe(btn.id, img);
 
-//     searchView.clearRecipe();
-
-//     loaderImg(elements.itemMenu);
-
-//     await state.recipe.disRecipe();
-//     state.recipe.calcTime();
-//     state.recipe.calcServings();
-//     arr = state.recipe.data;
-//     timeToCook = state.recipe.cookTime;
-//     servings = state.recipe.servings;
-
-//     // ! check
-//     console.log(state.recipe.cookTime)
-
-//     searchView.clearRecipe();
-
-//     searchView.displayChosenRecipe(arr, img, recipeName, timeToCook, servings);
-//   }
-// }
-// }
+elements.itemMenu.addEventListener("click", (e) => {
+  if (e.target.matches(".incBtn")) {
+    state.recipe.ingridienceChange("inc");
+    recipeView.updateIngValue(state.recipe);
+  } else if (e.target.matches(".decBtn") && state.recipe.servings > 1) {
+    state.recipe.ingridienceChange("dec");
+    recipeView.updateIngValue(state.recipe);
+  }
+});

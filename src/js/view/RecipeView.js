@@ -1,7 +1,7 @@
 // add every ingr
 import { elements } from "./base";
 
-// clear chosen recipe (middle) area 
+// clear chosen recipe (middle) area
 export const clearRecipe = () => {
   elements.itemMenu.innerHTML = "";
 };
@@ -16,7 +16,7 @@ const addIngridients = (name, value, unit) => {
 
   document
     .querySelector(".ingridientList")
-    .insertAdjacentHTML("afterbegin", ingHtml);
+    .insertAdjacentHTML("beforeend", ingHtml);
 };
 // displa ingr
 export const displayChosenRecipe = (arr, image, name, time, serv) => {
@@ -24,8 +24,10 @@ export const displayChosenRecipe = (arr, image, name, time, serv) => {
             <img src="${image}" alt="RecipePic">
             <div class="servingsPerson">
               <div class="timeToCook"><img src="./img/timeToCook.png" alt="CookingTime">${time}</div>
-              <div class="servings">${serv} 
-                <img src="./img/servings-img.png" alt="CookingTime">
+              <div class="servings"><img src="./img/servings-img.png" alt="CookingTime"> ${serv} servings
+              </div>
+              <div class="plusMinusBtn">
+                <button><img class="decBtn" src="./img/minus_btn.png" alt=""></button><button><img class="incBtn" src="./img/plus_btn.png" alt=""></button>
               </div>
           </div>
           <ul class="ingridientList">
@@ -35,5 +37,25 @@ export const displayChosenRecipe = (arr, image, name, time, serv) => {
 
   arr.forEach((e) => {
     addIngridients(e.name, e.amount.metric.value, e.amount.metric.unit);
+  });
+};
+
+
+// update new servings
+export const updateIngValue = (recipe) => {
+  document.querySelector(
+    ".servings"
+  ).textContent = `${recipe.servings} servings`;
+
+  // ? reusable code. Results are turned into array and them forEach is used
+  const countElements = Array.from(document.querySelectorAll(".ingCount"));
+  console.log(recipe.data[0]);
+  countElements.forEach((el, i) => {
+    const unit = recipe.data[i].amount.metric.unit;
+    el.textContent = `${
+      recipe.data[i].amount.metric.value > 1
+        ? Math.ceil(recipe.data[i].amount.metric.value)
+        : recipe.data[i].amount.metric.value
+    } ${unit}`;
   });
 };
