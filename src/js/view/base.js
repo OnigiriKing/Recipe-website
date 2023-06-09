@@ -8,6 +8,10 @@ export const elements = {
   dayNightBtnImg: document.querySelector(".dayMode img"),
   dayMode: document.querySelector(".dayMode"),
   plusMinus: document.querySelector(".plusMinusBtn"),
+  shoppingList: document.querySelector(".shoppingList"),
+  listItems: document.querySelector(".listItems"),
+  deleteItemBtn: document.querySelector(".deleteResItem"),
+  addRecipeDiv: document.querySelector(".addRecipeDiv"),
 };
 
 export const elementsStrings = {

@@ -1,8 +1,11 @@
 import Search from "./model/Search";
 import Recipe from "./model/Recipe";
+import List from "./model/List";
 import * as searchView from "./view/SearchView";
 import * as recipeView from "./view/RecipeView";
+import * as listView from "./view/ListView";
 import { elements, loaderImg, removeLoaderImg } from "./view/base";
+
 
 const state = {};
 
@@ -70,8 +73,6 @@ const displayRecipe = async () => {
 
       searchView.highlightChosen(id, active);
 
-      console.log(state.recipe.data);
-
       recipeView.displayChosenRecipe(
         arr,
         img,
@@ -79,6 +80,7 @@ const displayRecipe = async () => {
         timeToCook,
         servings
       );
+      
     } catch (error) {
       alert(error);
       console.log(error);
@@ -86,9 +88,10 @@ const displayRecipe = async () => {
   }
 };
 
-// btn Search
 
-['click', ]
+
+
+// btn Search
 elements.searchBtn.addEventListener("click", (e) => {
   e.preventDefault();
   searchControll();

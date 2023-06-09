@@ -61,7 +61,8 @@
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Pizza-3007395.jpg/800px-Pizza-3007395.jpg" alt="RecipePic">
           <div class="servingsPerson">
               <div class="timeToCook"><img src="./img/timeToCook.png" alt="CookingTime">70m</div>
-              <div class="servings"><img src="./img/servings-img.png" alt="CookingTime"> 2 person
+              <div class="servImage"><img src="./img/servings-img.png" alt="servings"></div>
+              <div class="servings"> 2 person
               </div>
               <div class="plusMinusBtn">
                 <button><img class="decBtn" src="./img/minus_btn.png" alt=""></button><button><img class="incBtn" src="./img/plus_btn.png" alt=""></button>
@@ -73,14 +74,25 @@
               <p class="ingCount">113.398 g</p>
             </li>
           </ul>
+          </div>
+          <div>
+            <button class="addRecipeBtn">Add recipe in grocery list</button>
           </div> -->
         </div>
         <!-- ? Groccery -->
-        <div class="shoppingList sideMenu">
-          <img src="./img/groccery.png" alt="Groccery">
-          <div class="testText">List</div>
-          <div class="copywriteList"><p>By Onigiri_king. Powered by spoonacular API™</p></div>
+        <div class="sideMenu">
+          <div class="shoppingList">
+             <img src="./img/groccery.png" alt="Groccery">
+          <div class="listItems">
+            <div class="items">
+              <div><input type="text" value="10"><p>cups</p></div>
+            <p>milk</p>
+            <button class="deleteResItem"><img src="./img/delete_btn.png" alt=""></button>
+            </div>
+          </div>
+          </div>
         </div>
+        <div class="copywriteList"><p>By Onigiri_king. Powered by spoonacular API™</p></div>
       </div>
     </div>
   </body>

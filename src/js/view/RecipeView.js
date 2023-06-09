@@ -24,7 +24,8 @@ export const displayChosenRecipe = (arr, image, name, time, serv) => {
             <img src="${image}" alt="RecipePic">
             <div class="servingsPerson">
               <div class="timeToCook"><img src="./img/timeToCook.png" alt="CookingTime">${time}</div>
-              <div class="servings"><img src="./img/servings-img.png" alt="CookingTime"> ${serv} servings
+              <div class="servImage"><img src="./img/servings-img.png" alt="servings"></div>
+              <div class="servings">${serv} servings
               </div>
               <div class="plusMinusBtn">
                 <button><img class="decBtn" src="./img/minus_btn.png" alt=""></button><button><img class="incBtn" src="./img/plus_btn.png" alt=""></button>
@@ -32,6 +33,9 @@ export const displayChosenRecipe = (arr, image, name, time, serv) => {
           </div>
           <ul class="ingridientList">
           </ul>
+          </div>
+          <div class= "addRecipeDiv">
+            <button class="addRecipeBtn">Add recipe in grocery list</button>
           </div>`;
   elements.itemMenu.insertAdjacentHTML("afterbegin", html);
 

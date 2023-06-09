@@ -128,14 +128,15 @@
 }
 
 .copywriteList {
-  position: relative;
-  top: 80%;
-  left: 10px;
+  position: absolute;
+  bottom: 10px;
+  right: 5px;
+  width: 100px;
 }
 
 .copywriteList p {
-  color: rgb(141, 141, 141);
-  font-size: 14px;
+  color: rgb(205, 204, 204);
+  font-size: 10px;
 }
 
 .recepieList {
@@ -149,7 +150,7 @@
 
 .recepieListA {
   text-decoration: none;
-  color:rgb(226, 116, 20);
+  color:rgb(240, 80, 40);
   text-align: center;
 }
 
@@ -230,7 +231,7 @@
 .ingridient h4 {
   margin-right: 5vw;
   margin-left: 20px;
-  color: rgb(200, 98, 26);
+  color: rgb(240, 80, 40);
   border-bottom: 1px solid ;
   
 }
@@ -241,7 +242,7 @@
 }
 
 .itemIngName {
-  color: rgb(200, 98, 26);
+  color: rgb(240, 80, 40);
   border: 1px solid black;
   border-radius: 20px;
   padding: 3px;
@@ -272,19 +273,28 @@
    flex-direction: row;
 }
 
-.servings img:only-child {
+.servImage img {
   width: 25px;
   position: relative;
   top: 23px;
-  right: 2px;
+  right: 10px;
+}
+
+.shoppingList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .shoppingList img {
-  width: 70%;
-  height: 6%;
-  max-width: 100px;
-  max-height: 30px;
-  min-height: 20px;
+  display: flex;
+  position: relative;
+  bottom: 10px;
+  width: 100%;
+  height: 30%;
+  max-width: 120px;
+
 }
 
 .plusMinusBtn button {
@@ -300,4 +310,62 @@
 .plusMinusBtn img:active {
   background-color: rgb(200, 200, 200);
    border-radius: 15px;
+}
+
+.items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 20px;
+}
+
+.items div {
+  display: flex;
+}
+
+.items p{
+  position: inherit;
+  margin-left: 10%;
+  margin-right: 4px;
+}
+
+.items input {
+  width: 20px;
+}
+
+.items button {
+  width: 18px;
+  height: 20px;
+  border-radius: 20px;
+  border: unset;
+  background: transparent;
+}
+.items img {
+  width: 15px;
+  height: 20px;
+  position: relative;
+  top: 1px;
+}
+
+.items button:active {
+  background-color: rgb(200, 200, 200);
+}
+
+@media screen and (min-width: 1351px) {
+  .items p {
+    margin-left: 50px;
+  }
+}
+
+.addRecipeBtn {
+  color: rgb(240, 80, 40);
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 3px;
+  background-color: #fff
+}
+
+.addRecipeBtn:active {
+  background-color: rgb(200, 200, 200);;
 }
