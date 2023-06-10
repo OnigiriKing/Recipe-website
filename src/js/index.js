@@ -10,8 +10,6 @@ import { elements, loaderImg, removeLoaderImg } from "./view/base";
 
 const state = {};
 
-// ! remove later
-state.likes = new Like();
 
 const searchControll = async () => {
   const query = searchView.getInput();
@@ -79,6 +77,7 @@ const displayRecipe = async () => {
       searchView.highlightChosen(id, active);
 
 
+
       recipeView.displayChosenRecipe(
         arr,
         img,
@@ -125,7 +124,16 @@ const controllLike = () => {
     state.likes.deleteItem(newID);
     likesView.toggleLikeBtn(false);
   }
+   likesView.likeBtnVisability(state.likes.getLikesNumber());
 };
+
+//? load saved info on load
+window.addEventListener('load', () => {
+  state.likes = new Like();
+  state.likes.readStorage();
+  likesView.likeBtnVisability(state.likes.getLikesNumber());
+  console.log(state.likes);
+})
 
 // btn Search
 elements.searchBtn.addEventListener("click", (e) => {
@@ -167,7 +175,6 @@ elements.itemMenu.addEventListener("click", (e) => {
   } else if (e.target.matches(".addRecipeBtn")) {
     addRecipeInList();
   } else if (e.target.matches(".favoriteRecipeBtn")) {
-    // console.log(e.target.classList.contains("favoriteRecipeBtn"));
     controllLike();
   }
 });

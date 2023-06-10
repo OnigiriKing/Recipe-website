@@ -9,3 +9,7 @@ export const toggleLikeBtn = isLiked => {
           .classList.remove("darkLike");
     }
 };
+
+export const likeBtnVisability = numLikes => {
+    elements.likeBtn.style.visibility = numLikes > 0 ? "visible" : "hidden";
+};

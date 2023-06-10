@@ -88,6 +88,10 @@
   filter: brightness(0.8);
 }
 
+.favoriteList {
+  visibility: hidden;
+}
+
 .dayMode img {
   width: 40px;
 }

@@ -13,6 +13,7 @@ export const elements = {
   deleteItemBtn: document.querySelector(".deleteResItem"),
   sideMenu: document.querySelector(".shoppingList"),
   addFav: document.querySelector(".favoriteRecipe"),
+  likeBtn: document.querySelector(".favoriteList"),
 };
 
 export const elementsStrings = {
