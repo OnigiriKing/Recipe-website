@@ -317,7 +317,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 20px;
+  height: 60px;
 }
 
 .items div {
@@ -331,7 +331,10 @@
 }
 
 .items input {
-  width: 20px;
+  width: 40px;
+  position: relative;
+  left: 3px;
+  size: 1px;
 }
 
 .items button {
@@ -340,9 +343,11 @@
   border-radius: 20px;
   border: unset;
   background: transparent;
+  position: relative;
+  right:3px;
 }
 .items img {
-  width: 15px;
+  width: 17px;
   height: 20px;
   position: relative;
   top: 1px;
@@ -368,4 +373,25 @@
 
 .addRecipeBtn:active {
   background-color: rgb(200, 200, 200);;
+}
+
+.favoriteRecipe img {
+  width: 23px;
+  height: 25px;
+  display: flex;
+}
+.favoriteRecipe {
+  border: unset;
+  background-color: transparent;
+  position: relative;
+  top: 10px;
+  left: 10px;
+}
+
+.favoriteRecipe img:active {
+  filter: brightness(0.8);
+}
+
+.darkLike {
+  filter: brightness(0.1);
 }

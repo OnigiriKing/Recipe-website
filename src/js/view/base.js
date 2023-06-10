@@ -11,7 +11,8 @@ export const elements = {
   shoppingList: document.querySelector(".shoppingList"),
   listItems: document.querySelector(".listItems"),
   deleteItemBtn: document.querySelector(".deleteResItem"),
-  addRecipeDiv: document.querySelector(".addRecipeDiv"),
+  sideMenu: document.querySelector(".shoppingList"),
+  addFav: document.querySelector(".favoriteRecipe"),
 };
 
 export const elementsStrings = {

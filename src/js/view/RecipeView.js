@@ -19,7 +19,7 @@ const addIngridients = (name, value, unit) => {
     .insertAdjacentHTML("beforeend", ingHtml);
 };
 // displa ingr
-export const displayChosenRecipe = (arr, image, name, time, serv) => {
+export const displayChosenRecipe = (arr, image, name, time, serv, isLiked = false) => {
   const html = `<div class="itemIgnPic"><h2 class="itemIngName">${name}</h2>
             <img src="${image}" alt="RecipePic">
             <div class="servingsPerson">
@@ -36,6 +36,9 @@ export const displayChosenRecipe = (arr, image, name, time, serv) => {
           </div>
           <div class= "addRecipeDiv">
             <button class="addRecipeBtn">Add recipe in grocery list</button>
+            <button class="favoriteRecipe">
+            <img class="favoriteRecipeBtn ${isLiked ? 'darkLike' : ''}" src="./img/fav-img.png" alt="Favorite"/>
+          </button>
           </div>`;
   elements.itemMenu.insertAdjacentHTML("afterbegin", html);
 
